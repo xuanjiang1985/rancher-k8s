@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gopv
+  namespace: default
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  mountOptions:
+  - nolock
+  - nfsvers=3
+  nfs:
+    server: 192.168.56.1
+    path: /Users/zhougang/NFS/go
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: go-pvc1
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs

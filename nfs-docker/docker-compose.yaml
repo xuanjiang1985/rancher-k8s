@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  nfs-server:
+    image: gists/nfs-server
+    container_name: nfs-server
+    ports:
+      - "2049:2049"
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+      - SETPCAP
+    environment:
+      - NFS_DOMAIN=*
+      - NFS_OPTION=fsid=0,rw,sync,insecure,no_root_squash,anonuid=0,anongid=0,no_subtree_check,nohide
+    volumes:
+      - /Users/zhougang/NFS:/nfs-share:cached
+    restart: always

@@ -1,0 +1,6 @@
+# nfs v4
+sudo mount -v -t nfs -o vers=4,port=2049 192.168.1.3:/ /docker-nfs
+sudo mount -v -t nfs -o vers=4,port=2049 127.0.0.1:/ /var/nfs-test2
+sudo mount -v 192.168.1.3:/ /docker-nfs
+sudo mount -t nfs 192.168.1.254:/root/test /docker-nfs2
+sudo mount -v -t nfs -o vers=4 127.0.0.1:/ ~/nfs-test2
